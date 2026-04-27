@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bomba Mejorada</title>
+</head>
+<body>
+
+<h1 id="mensaje">💣 Esperando...</h1>
+
+<!-- Input para que el usuario ingrese el tiempo -->
+<input type="number" id="tiempoInput" placeholder="Segundos">
+
+<!-- Botones -->
+<button onclick="iniciarBomba()">Iniciar</button>
+<button onclick="detenerBomba()">Detener</button>
+
+<script>
+
+// Variable global para poder controlar el intervalo
+let intervalo;
+
+// Función que inicia la bomba
+function iniciarBomba() {
+
+    // Obtenemos el valor del input y lo convertimos a número
+    let tiempo = Number(document.getElementById("tiempoInput").value);
+
+    // Seleccionamos el mensaje en pantalla
+    let mensaje = document.getElementById("mensaje");
+
+    // Validamos que el número sea correcto
+    if (isNaN(tiempo) || tiempo <= 0) {
+        alert("Ingresa un número válido mayor a 0");
+        return; // detiene la función
+    }
+
+    // Si ya había un temporizador, lo detenemos
+    clearInterval(intervalo);
+
+    // Iniciamos el temporizador
+    intervalo = setInterval(function() {
+
+        // Mostramos el tiempo restante
+        mensaje.textContent = "Explota en: " + tiempo;
+
+        // Si quedan pocos segundos, cambia el color
+        if (tiempo <= 3) {
+            mensaje.style.color = "red";
+        } else {
+            mensaje.style.color = "black";
+        }
+
+        // Restamos 1 segundo
+        tiempo--;
+
+        // Cuando termina el tiempo
+        if (tiempo < 0) {
+            clearInterval(intervalo);
+            mensaje.textContent = "💥 BOOM 💥";
+        }
+
+    }, 1000);
+}
+
+// Función para detener la bomba manualmente
+function detenerBomba() {
+    clearInterval(intervalo);
+    document.getElementById("mensaje").textContent = "⛔ Bomba desactivada";
+}
+
+</script>
+
+</body>
+</html>
