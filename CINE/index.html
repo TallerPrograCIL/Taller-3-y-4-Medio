@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- Define que el documento es HTML5 -->
+
+<html lang="es">
+<!-- Idioma del documento -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Permite usar tildes y caracteres especiales -->
+
+    <title>Menú cine</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+
+    <!-- Conectamos el archivo de estilos CSS -->
+    <link rel="stylesheet" href="misEstilos.css">
+
+    <!-- Conectamos el archivo JavaScript (NO lo modificamos) -->
+    <script src="misScripts.js"></script>
+</head>
+
+<body>
+
+    <!-- CONTENEDOR PRINCIPAL:
+         Agrupa todo el contenido para poder aplicar estilos fácilmente -->
+    <div class="contenedor">
+
+        <!-- TÍTULO PRINCIPAL -->
+        <h1>🎬 ¡Bienvenidos al cine!</h1>
+
+        <!-- SUBTÍTULO -->
+        <h3>🍿 Elige tu película</h3>
+
+        <!-- DESCRIPCIÓN:
+             Explica al usuario qué debe hacer -->
+        <p class="descripcion">
+            Ingresa tu edad y selecciona un género para recomendarte una película.
+        </p>
+
+        <!-- SECCIÓN DEL FORMULARIO -->
+        <div class="formulario">
+
+            <!-- ETIQUETA DEL INPUT -->
+            <label>Edad:</label>
+
+            <!-- INPUT:
+                 - type="number": solo permite números
+                 - id="edad": MUY IMPORTANTE, porque JavaScript usa este ID
+                 - placeholder: texto de ejemplo dentro del input -->
+            <input type="number" id="edad" placeholder="Ej: 15">
+
+        </div>
+
+        <!-- BOTONES:
+             Cada botón ejecuta la función "recomendar" del JS
+             y le pasa un género como parámetro -->
+        <div class="botones">
+
+            <button onclick="recomendar('drama')">
+                🎭 Drama
+            </button>
+
+            <button onclick="recomendar('comedia')">
+                😂 Comedia
+            </button>
+
+            <button onclick="recomendar('musical')">
+                🎵 Musical
+            </button>
+
+            <button onclick="recomendar('crimen')">
+                🔎 Crimen
+            </button>
+
+        </div>
+
+        <!-- SECCIÓN DONDE SE MOSTRARÁ EL RESULTADO -->
+        <div class="resultado">
+
+            <h3>🎥 Nuestra recomendación:</h3>
+
+            <!-- ESTE ELEMENTO ES CLAVE:
+                 JavaScript cambia su contenido usando:
+                 document.getElementById("recomendacion") -->
+            <h2 id="recomendacion">---</h2>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
